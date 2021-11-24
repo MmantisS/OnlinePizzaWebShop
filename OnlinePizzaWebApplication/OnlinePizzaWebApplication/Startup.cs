@@ -26,7 +26,7 @@ namespace OnlinePizzaWebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<AppDbContext>()
@@ -84,29 +84,26 @@ namespace OnlinePizzaWebApplication
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
 
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
             app.UseStaticFiles();
             app.UseSession();
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+            app.UseEndpoints(routes =>
             {
-                routes.MapRoute(
+                routes.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
         }

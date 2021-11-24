@@ -20,5 +20,9 @@ namespace OnlinePizzaWebApplication.Models
 
         public virtual ICollection<PizzaIngredients> PizzaIngredients { get; set; }
 
+        public double Price { get; set; }
+
+        public int Quantity { get; set; }
+
     }
 }

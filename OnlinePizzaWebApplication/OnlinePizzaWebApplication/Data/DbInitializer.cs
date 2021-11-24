@@ -111,7 +111,7 @@ namespace OnlinePizzaWebApplication.Data
                 new Reviews { User = user5, Title ="Super Special", Description="Super special pizza, the best taste in the world!", Grade=5, Date=DateTime.Now.AddDays(-9), Pizza = piz5 },
             };
 
-            var ing1 = new Ingredients { Name = "Cheese" };
+            var ing1 = new Ingredients { Name = "Cheese", Price = 25, Quantity = 40 };
             var ing2 = new Ingredients { Name = "Flour" };
             var ing3 = new Ingredients { Name = "Tomatoe sauce" };
             var ing4 = new Ingredients { Name = "Lettuce" };
