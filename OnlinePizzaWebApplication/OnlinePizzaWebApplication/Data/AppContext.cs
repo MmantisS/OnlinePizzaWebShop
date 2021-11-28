@@ -16,6 +16,7 @@ namespace OnlinePizzaWebApplication.Data
 
         }
 
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Pizzas> Pizzas { get; set; }
         public DbSet<Ingredients> Ingredients { get; set; }

@@ -9,21 +9,82 @@ namespace OnlinePizzaWebApplication.Data
 {
     public class DbInitializer
     {
+        public static RoleManager<IdentityRole> _roleManager;
         public static void Initialize(AppDbContext context, IServiceProvider service)
         {
             context.Database.EnsureCreated();
 
             var roleManager = service.GetRequiredService<RoleManager<IdentityRole>>();
+            _roleManager = roleManager;
             var userManager = service.GetRequiredService<UserManager<IdentityUser>>();
 
             if (context.Pizzas.Any())
             {
                 return;
             }
-
             ClearDatabase(context);
             CreateAdminRole(context, roleManager, userManager);
+            CreateManagerRole(context, roleManager, userManager);
+            CreateTechnologistRole(context, roleManager, userManager);
             SeedDatabase(context, roleManager, userManager);
+        }
+
+        private static void CreateTechnologistRole(AppDbContext context, RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
+        {
+            bool roleExists = roleManager.RoleExistsAsync("Tech").Result;
+            if (roleExists)
+            {
+                return;
+            }
+
+            var role = new IdentityRole()
+            {
+                Name = "Tech"
+            };
+            roleManager.CreateAsync(role).Wait();
+
+            var user = new IdentityUser()
+            {
+                UserName = "Tech",
+                Email = "Tech@default.com"
+            };
+
+            string adminPassword = "Password123";
+            var userResult = userManager.CreateAsync(user, adminPassword).Result;
+
+            if (userResult.Succeeded)
+            {
+                userManager.AddToRoleAsync(user, "Tech").Wait();
+            }
+        }
+
+        private static void CreateManagerRole(AppDbContext context, RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager)
+        {
+            bool roleExists = _roleManager.RoleExistsAsync("Manager").Result;
+            if (roleExists)
+            {
+                return;
+            }
+
+            var role = new IdentityRole()
+            {
+                Name = "Manager"
+            };
+            _roleManager.CreateAsync(role).Wait();
+
+            var user = new IdentityUser()
+            {
+                UserName = "manager",
+                Email = "manager@default.com"
+            };
+
+            string adminPassword = "Password123";
+            var userResult = _userManager.CreateAsync(user, adminPassword).Result;
+
+            if (userResult.Succeeded)
+            {
+                _userManager.AddToRoleAsync(user, "Manager").Wait();
+            }
         }
 
         private static void CreateAdminRole(AppDbContext context, RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager)
@@ -228,6 +289,11 @@ namespace OnlinePizzaWebApplication.Data
                 ord1
             };
 
+            var Employees = new List<Employee>()
+            { new Employee {Name = "Manager", Salary = 20000, Role = _roleManager.FindByNameAsync("Manager").Result}};
+
+
+            _context.Employees.AddRange(Employees);
             _context.Categories.AddRange(cats);
             _context.Pizzas.AddRange(pizs);
             _context.Reviews.AddRange(revs);
