@@ -99,6 +99,7 @@ namespace OnlinePizzaWebApplication
             app.UseAuthentication();
 
             app.UseRouting();
+            app.UseAuthorization();
             app.UseEndpoints(routes =>
             {
                 routes.MapControllerRoute(
