@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace OnlinePizzaWebApplication.Models
@@ -20,6 +21,7 @@ namespace OnlinePizzaWebApplication.Models
 
         public virtual ICollection<PizzaIngredients> PizzaIngredients { get; set; }
 
+        public DateTime ExpirationDate { get; set; }
         public double Price { get; set; }
 
         public int Quantity { get; set; }
