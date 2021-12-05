@@ -1,0 +1,30 @@
+﻿@model OnlinePizzaWebApplication.Models.Ingredients
+
+@{
+    var ModelName = "Ingredients";
+    ViewData["Title"] = ModelName;
+}
+
+<form asp-action="BuyMore">
+    <div class="form-horizontal">
+        <h4>Ingredients</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <div class="form-group">
+            <label asp-for="Quantity" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input name="AddedQuantity" class="form-control" />
+            </div>
+        </div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

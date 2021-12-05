@@ -84,6 +84,12 @@
             @Html.DisplayFor(model => model.User.Email)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+        <dt>
             <br />----- Order
         </dt>
         <dd>
@@ -108,7 +114,7 @@
                 @Html.DisplayNameFor(model => orderDetail.Price)
             </dt>
             <dd>
-                    @orderDetail.Price.ToString("c")
+                @orderDetail.Price.ToString("c")
             </dd>
             <dt>
                 Sub Total
@@ -130,7 +136,7 @@
         <dd>
             @Model.OrderTotal.ToString("c")
         </dd>
-        
+
     </dl>
 </div>
 <div>

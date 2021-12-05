@@ -173,21 +173,21 @@ namespace OnlinePizzaWebApplication.Data
             };
 
             var ing1 = new Ingredients { Name = "Cheese", Price = 25, Quantity = 40 };
-            var ing2 = new Ingredients { Name = "Flour" };
-            var ing3 = new Ingredients { Name = "Tomatoe sauce" };
-            var ing4 = new Ingredients { Name = "Lettuce" };
-            var ing5 = new Ingredients { Name = "Mushrooms" };
-            var ing6 = new Ingredients { Name = "Kebab" };
-            var ing7 = new Ingredients { Name = "Shrimp" };
-            var ing8 = new Ingredients { Name = "Pineapple" };
-            var ing9 = new Ingredients { Name = "Ham" };
-            var ing10 = new Ingredients { Name = "Broccoli" };
-            var ing11 = new Ingredients { Name = "Onions" };
-            var ing12 = new Ingredients { Name = "Olives" };
-            var ing13 = new Ingredients { Name = "Bananas" };
-            var ing14 = new Ingredients { Name = "Chicken" };
-            var ing15 = new Ingredients { Name = "Tomatoes" };
-            var ing16 = new Ingredients { Name = "Minced Meat" };
+            var ing2 = new Ingredients { Name = "Flour", Price = 5, Quantity = 100, PurchasePrice = 2.5 };
+            var ing3 = new Ingredients { Name = "Tomatoe sauce", Price = 25, Quantity = 10, PurchasePrice = 20, ExpirationDate = DateTime.Parse("15.02.2022")};
+            var ing4 = new Ingredients { Name = "Lettuce", Price = 10, Quantity = 40, PurchasePrice = 5, ExpirationDate = DateTime.Parse("12.12.2021")};
+            var ing5 = new Ingredients { Name = "Mushrooms", Price = 25, Quantity = 40 };
+            var ing6 = new Ingredients { Name = "Kebab", Price = 25, Quantity = 40 };
+            var ing7 = new Ingredients { Name = "Shrimp", Price = 25, Quantity = 40 };
+            var ing8 = new Ingredients { Name = "Pineapple", Price = 25, Quantity = 40 };
+            var ing9 = new Ingredients { Name = "Ham", Price = 25, Quantity = 40 };
+            var ing10 = new Ingredients { Name = "Broccoli", Price = 25, Quantity = 40 };
+            var ing11 = new Ingredients { Name = "Onions", Price = 25, Quantity = 40 };
+            var ing12 = new Ingredients { Name = "Olives", Price = 25, Quantity = 40 };
+            var ing13 = new Ingredients { Name = "Bananas", Price = 25, Quantity = 40 };
+            var ing14 = new Ingredients { Name = "Chicken", Price = 25, Quantity = 40 };
+            var ing15 = new Ingredients { Name = "Tomatoes", Price = 25, Quantity = 40 };
+            var ing16 = new Ingredients { Name = "Minced Meat", Price = 25, Quantity = 40 };
 
             var ings = new List<Ingredients>()
             {
@@ -258,6 +258,10 @@ namespace OnlinePizzaWebApplication.Data
                 new PizzaIngredients { Ingredient = ing16, Pizza = piz10 },
 
             };
+            var Employees = new List<Employee>()
+            { new Employee {Name = "Колмыков Никита", Salary = 40000, Role = _roleManager.Roles.First(e => e.Name == "Manager"), WorkedHours= 20},
+                new Employee {Name = "Ягодников Алексей", Salary = 30000, Role = _roleManager.Roles.First(e => e.Name == "Tech"), WorkedHours = 15},
+                new Employee {Name = "Кардапольцев Дмитрий", Salary = 10000, Role = _roleManager.Roles.First(e => e.Name == "Manager"), BonusJobs = 250, AmountOfBonusJobs = 10} };
 
             var ord1 = new Order
             {
@@ -272,25 +276,26 @@ namespace OnlinePizzaWebApplication.Data
                 User = user1,
                 ZipCode = "43210",
                 OrderTotal = 370.00M,
+                EmployeeCook = Employees.ElementAt(1),
+                EmployeeCourier = Employees.ElementAt(2)
             };
+
+
 
             var ord2 = new Order { };
             var ord3 = new Order { };
 
             var orderLines = new List<OrderDetail>()
             {
-                new OrderDetail { Order=ord1, Pizza=piz1, Amount=2, Price=piz1.Price},
-                new OrderDetail { Order=ord1, Pizza=piz3, Amount=1, Price=piz3.Price},
-                new OrderDetail { Order=ord1, Pizza=piz5, Amount=3, Price=piz5.Price},
+                new OrderDetail { Order=ord1, Pizza=piz1, Amount=2, Price=piz1.Price,},
+                new OrderDetail { Order=ord1, Pizza=piz3, Amount=1, Price=piz3.Price,},
+                new OrderDetail { Order=ord1, Pizza=piz5, Amount=3, Price=piz5.Price,},
             };
 
             var orders = new List<Order>()
             {
                 ord1
             };
-
-            var Employees = new List<Employee>()
-            { new Employee {Name = "Manager", Salary = 20000, Role = _roleManager.FindByNameAsync("Manager").Result}};
 
 
             _context.Employees.AddRange(Employees);

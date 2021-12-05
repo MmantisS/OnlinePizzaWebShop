@@ -24,6 +24,7 @@ namespace OnlinePizzaWebApplication.Models
         public DateTime ExpirationDate { get; set; }
         public double Price { get; set; }
 
+        public double PurchasePrice { get; set; }
         public int Quantity { get; set; }
 
     }

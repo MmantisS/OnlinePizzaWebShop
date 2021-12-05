@@ -77,10 +77,22 @@ namespace OnlinePizzaWebApplication.Models
         //[BindNever]
         //[ScaffoldColumn(false)]
         //public string OrderStatus { get; set; }
+        public virtual Employee EmployeeCourier { get; set; }
+
+        public virtual Employee EmployeeCook { get; set; }
+
+        public Status status { get; set; }
 
         public string UserId { get; set; }
 
         public IdentityUser User { get; set; }
         
+    }
+    public enum Status
+    {
+        New,
+        Cooking,
+        Ready,
+        Delivered
     }
 }

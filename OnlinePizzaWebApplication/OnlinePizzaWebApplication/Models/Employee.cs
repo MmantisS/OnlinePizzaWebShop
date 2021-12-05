@@ -12,15 +12,18 @@ namespace OnlinePizzaWebApplication.Models
         public string Name { get; set; }
         public double Salary { get; set; }
 
+        public double FinalSalary { get; set; }
         public double WorkedHours { get; set; }
         public double BonusJobs { get; set; }
         public int AmountOfBonusJobs { get; set; }
-        public virtual IdentityRole Role { get; set; }
+
+        public virtual IList<OrderDetail> AssignedOrders { get; set; }
+        public IdentityRole Role { get; set; }
         public double CountSalary()
-        { 
-            Salary = Salary / 160 * WorkedHours;
-            Salary += BonusJobs * AmountOfBonusJobs;
-            return Salary;
+        {
+            FinalSalary = Salary / 160 * WorkedHours;
+            FinalSalary += BonusJobs * AmountOfBonusJobs;
+            return FinalSalary;
         }
 
     }
