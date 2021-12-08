@@ -20,7 +20,7 @@ namespace OnlinePizzaWebApplication.Models
 
         public string ShoppingCartId { get; set; }
 
-        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public IList<ShoppingCartItem> ShoppingCartItems { get; set; }
 
 
         public static ShoppingCart GetCart(IServiceProvider services)
@@ -87,13 +87,13 @@ namespace OnlinePizzaWebApplication.Models
             return localAmount;
         }
 
-        public async Task<List<ShoppingCartItem>> GetShoppingCartItemsAsync()
+        public async Task<IList<ShoppingCartItem>> GetShoppingCartItemsAsync()
         {
-            return ShoppingCartItems ??
+            return (IList<ShoppingCartItem>)(ShoppingCartItems ??
                    (ShoppingCartItems = await
                        _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                            .Include(s => s.Pizza)
-                           .ToListAsync());
+                           .ToListAsync()));
         }
 
         public async Task ClearCartAsync()

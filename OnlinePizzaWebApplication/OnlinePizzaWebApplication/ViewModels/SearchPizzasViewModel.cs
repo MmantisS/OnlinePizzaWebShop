@@ -11,7 +11,7 @@ namespace OnlinePizzaWebApplication.ViewModels
     public class SearchPizzasViewModel
     {
         [Required]
-        [DisplayName("Serach")]
+        [DisplayName("Search")]
         public string SearchText { get; set; }
 
         //public IEnumerable<string> SearchListExamples { get; set; }

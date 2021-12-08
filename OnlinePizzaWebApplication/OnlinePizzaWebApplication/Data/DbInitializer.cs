@@ -118,29 +118,24 @@ namespace OnlinePizzaWebApplication.Data
 
         private static void SeedDatabase(AppDbContext _context, RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager)
         {
-            var cat1 = new Categories { Name = "Standard", Description = "The Bakery's Standard pizzas all year around." };
-            var cat2 = new Categories { Name = "Spcialities", Description = "The Bakery's Speciality pizzas only for a limited time." };
-            var cat3 = new Categories { Name = "News", Description = "The Bakery's New pizzas on the menu." };
+            var cat1 = new Categories { Name = "Стандарт"};
+            var cat2 = new Categories { Name = "Сезонные предложения"};
+            var cat3 = new Categories { Name = "Новые"};
 
             var cats = new List<Categories>()
             {
                 cat1, cat2, cat3
             };
 
-            var piz1 = new Pizzas { Name = "Capricciosa", Price = 70.00M, Category = cat1, Description = "A normal pizza with a taste from the forest.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Pizza_capricciosa.jpg", IsPizzaOfTheWeek = false };
-            var piz2 = new Pizzas { Name = "Veggie", Price = 70.00M, Category = cat3, Description = "Veggie Pizza for vegitarians", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Vegetarian_pizza.jpg", IsPizzaOfTheWeek = false };
-            var piz3 = new Pizzas { Name = "Hawaii", Price = 75.00M, Category = cat1, Description = "A nice tasting pizza from Hawaii.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Hawaiian_pizza_1.jpg", IsPizzaOfTheWeek = true };
-            var piz4 = new Pizzas { Name = "Margarita", Price = 65.00M, Category = cat1, Description = "A basic pizza for everyone.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg", IsPizzaOfTheWeek = false };
-            var piz5 = new Pizzas { Name = "Kebab Special", Price = 85.00M, Category = cat2, Description = "A special pizza with kebab for the hungry one.", ImageUrl = "http://2.bp.blogspot.com/_3cSn3Qz_4IA/THkYqKwGw1I/AAAAAAAAAPg/ybKpvRbjDWE/s1600/matsl%C3%A4kten+002.JPG", IsPizzaOfTheWeek = true };
-            var piz6 = new Pizzas { Name = "Pescatore", Price = 80.00M, Category = cat1, Description = "A pizza with taste from the ocean.", ImageUrl = "https://isinginthekitchen.files.wordpress.com/2014/07/dsc_0231.jpg", IsPizzaOfTheWeek = true };
-            var piz7 = new Pizzas { Name = "Barcelona", Price = 70.00M, Category = cat1, Description = "A pizza with taste from Spain, Barcelona", ImageUrl = "http://barcelona-home.com/blog/wp-content/upload/pizza/Pizzeria%20Los%20Amigos/pizza-jamon-dulce-y-champinone.jpg", IsPizzaOfTheWeek = false };
-            var piz8 = new Pizzas { Name = "Flying Jacob", Price = 89.00M, Category = cat2, Description = "Flying pizza from the sky, with taste of banana.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/64/Pizza_Hawaii_Special_p%C3%A5_Pizzeria_Papillon_i_Sala_1343.jpg", IsPizzaOfTheWeek = false };
-            var piz9 = new Pizzas { Name = "Kentucky", Price = 69.00M, Category = cat3, Description = "A pizza from America with the taste of Kuntucky Chicken.", ImageUrl = "http://assets.kraftfoods.com/recipe_images/opendeploy/54150_640x428.jpg", IsPizzaOfTheWeek = false };
-            var piz10 = new Pizzas { Name = "La Carne", Price = 75.00M, Category = cat1, Description = "Italian pizza with lot's of delicious meat.", ImageUrl = "https://www.davannis.com/wp-content/uploads/2015/03/five-meat.jpg", IsPizzaOfTheWeek = false };
+            var piz1 = new Pizzas { Name = "Каприкосса", Price = 70.00M, Category = cat1, Description = "A normal pizza with a taste from the forest.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Pizza_capricciosa.jpg", IsPizzaOfTheWeek = false };
+            var piz2 = new Pizzas { Name = "Вегетарианская", Price = 70.00M, Category = cat3, Description = "Veggie Pizza for vegitarians", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Vegetarian_pizza.jpg", IsPizzaOfTheWeek = false };
+            var piz3 = new Pizzas { Name = "Гавайская", Price = 75.00M, Category = cat1, Description = "A nice tasting pizza from Hawaii.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Hawaiian_pizza_1.jpg", IsPizzaOfTheWeek = true };
+            var piz4 = new Pizzas { Name = "Маргарита", Price = 65.00M, Category = cat1, Description = "A basic pizza for everyone.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg", IsPizzaOfTheWeek = false };
+            var piz5 = new Pizzas { Name = "Пицца Кебаб", Price = 85.00M, Category = cat2, Description = "A special pizza with kebab for the hungry one.", ImageUrl = "http://2.bp.blogspot.com/_3cSn3Qz_4IA/THkYqKwGw1I/AAAAAAAAAPg/ybKpvRbjDWE/s1600/matsl%C3%A4kten+002.JPG", IsPizzaOfTheWeek = true };
 
             var pizs = new List<Pizzas>()
             {
-                piz1, piz2, piz3, piz4, piz5, piz6, piz7, piz8, piz9, piz10
+                piz1, piz2, piz3, piz4, piz5
             };
 
             var user1 = new IdentityUser { UserName = "user1@gmail.com", Email = "user1@gmail.com" };
@@ -225,38 +220,6 @@ namespace OnlinePizzaWebApplication.Data
                 new PizzaIngredients { Ingredient = ing4, Pizza = piz5 },
                 new PizzaIngredients { Ingredient = ing11, Pizza = piz5 },
 
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz6 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz6 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz6 },
-                new PizzaIngredients { Ingredient = ing4, Pizza = piz6 },
-                new PizzaIngredients { Ingredient = ing7, Pizza = piz6 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing5, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing11, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing12, Pizza = piz7 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing5, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing8, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing13, Pizza = piz8 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz9 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz9 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz9 },
-                new PizzaIngredients { Ingredient = ing14, Pizza = piz9 },
-                new PizzaIngredients { Ingredient = ing15, Pizza = piz9 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz10 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz10 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz10 },
-                new PizzaIngredients { Ingredient = ing9, Pizza = piz10 },
-                new PizzaIngredients { Ingredient = ing16, Pizza = piz10 },
-
             };
             var Employees = new List<Employee>()
             { new Employee {Name = "Колмыков Никита", Salary = 40000, Role = _roleManager.Roles.First(e => e.Name == "Manager"), WorkedHours= 20},
@@ -265,16 +228,13 @@ namespace OnlinePizzaWebApplication.Data
 
             var ord1 = new Order
             {
-                FirstName = "Pelle",
-                LastName = "Andersson",
-                AddressLine1 = "MainStreet 12",
-                City = "Gothenburg",
-                Country = "Sweden",
+                FirstName = "Иван",
+                LastName = "Иванов",
+                AddressLine1 = "Ленина 12",
                 Email = "pelle22@gmail.com",
                 OrderPlaced = DateTime.Now.AddDays(-2),
                 PhoneNumber = "0705123456",
                 User = user1,
-                ZipCode = "43210",
                 OrderTotal = 370.00M,
                 EmployeeCook = Employees.ElementAt(1),
                 EmployeeCourier = Employees.ElementAt(2)

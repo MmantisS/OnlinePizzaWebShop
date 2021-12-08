@@ -18,12 +18,12 @@ namespace OnlinePizzaWebApplication.Models
         public List<OrderDetail> OrderLines { get; set; }
 
         [Required(ErrorMessage = "Please enter your first name")]
-        [Display(Name = "First name")]
+        [Display(Name = "Имя")]
         [StringLength(50)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter your last name")]
-        [Display(Name = "Last name")]
+        [Display(Name = "Фамилия")]
         [StringLength(50)]
         public string LastName { get; set; }
 
@@ -35,26 +35,10 @@ namespace OnlinePizzaWebApplication.Models
         [Display(Name = "Address 2")]
         public string AddressLine2 { get; set; }
 
-        [Required(ErrorMessage = "Please enter your zip code")]
-        [Display(Name = "Zip code")]
-        [StringLength(10, MinimumLength = 4)]
-        public string ZipCode { get; set; }
-
-        [Required(ErrorMessage = "Please enter your city")]
-        [StringLength(50)]
-        public string City { get; set; }
-
-        [StringLength(10)]
-        public string State { get; set; }
-
-        [Required(ErrorMessage = "Please enter your country")]
-        [StringLength(50)]
-        public string Country { get; set; }
-
         [Required(ErrorMessage = "Please enter your phone number")]
         [StringLength(25)]
         [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Phone number")]
+        [Display(Name = "Телефон")]
         public string PhoneNumber { get; set; }
 
         [Required]
@@ -66,12 +50,12 @@ namespace OnlinePizzaWebApplication.Models
 
         [BindNever]
         [ScaffoldColumn(false)]
-        [DisplayName("Order Total")]
+        [DisplayName("Сумма заказа")]
         public decimal OrderTotal { get; set; }
 
         [BindNever]
         [ScaffoldColumn(false)]
-        [DisplayName("Order Date")]
+        [DisplayName("Дата Заказа")]
         public DateTime OrderPlaced { get; set; }
 
         //[BindNever]

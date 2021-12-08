@@ -14,8 +14,6 @@ using OnlinePizzaWebApplication.Data;
 
 namespace OnlinePizzaWebApplication.Controllers
 {
-    //[Authorize(Roles = "Admin")]
-    [Authorize]
     public class OrdersController : Controller
     {
         private readonly IOrderRepository _orderRepository;
@@ -32,13 +30,12 @@ namespace OnlinePizzaWebApplication.Controllers
             _userManager = userManager;
         }
 
-        [Authorize]
         public IActionResult Checkout()
         {
+            ViewBag.Items = _shoppingCart.GetShoppingCartItemsAsync().Result;
             return View();
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Checkout(Order order)
         {
@@ -50,7 +47,7 @@ namespace OnlinePizzaWebApplication.Controllers
 
             if (_shoppingCart.ShoppingCartItems.Count == 0)
             {
-                ModelState.AddModelError("", "Your cart is empty, add some pizzas first");
+                ModelState.AddModelError("", "Корзина пустая, добавьте товаров");
             }
 
             if (ModelState.IsValid)
@@ -61,18 +58,17 @@ namespace OnlinePizzaWebApplication.Controllers
                 return RedirectToAction("CheckoutComplete");
             }
 
+            ViewBag.Items = _shoppingCart.ShoppingCartItems;
             return View(order);
         }
 
-        [Authorize]
         public IActionResult CheckoutComplete()
         {
-            ViewBag.CheckoutCompleteMessage = $"Thanks for your order, We'll deliver your pizzas soon!";
+            ViewBag.CheckoutCompleteMessage = $"Спасибо за заказ!";
             return View();
         }
 
         // GET: Reviews
-        [Authorize]
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
@@ -92,7 +88,6 @@ namespace OnlinePizzaWebApplication.Controllers
         }
 
         // GET: Orders/Details/5
-        [Authorize]
         public async Task<IActionResult> Details(int id)
         {
             if (id == 0)

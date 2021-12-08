@@ -170,13 +170,10 @@ namespace OnlinePizzaWebApplication.Repositories
                 FirstName = "Pelle",
                 LastName = "Andersson",
                 AddressLine1 = "MainStreet 12",
-                City = "Gothenburg",
-                Country = "Sweden",
                 Email = "pelle22@gmail.com",
                 OrderPlaced = DateTime.Now.AddDays(-2),
                 PhoneNumber = "0705123456",
                 User = user1,
-                ZipCode = "43210",
                 OrderTotal = 370.00M,
             };
 
