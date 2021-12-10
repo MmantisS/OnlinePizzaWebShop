@@ -1,27 +1,27 @@
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 
 @inject SignInManager<IdentityUser> SignInManager
 
 @if (SignInManager.IsSignedIn(User))
 {
-<ul class="nav navbar-nav navbar-right">
-    @if (User.IsInRole("Admin"))
-    {
-        <li><a asp-controller="Admin" asp-action="Index">Admin Page</a></li>
-    }
-    @if (User.IsInRole("Manager"))
-    {
-        <li><a asp-controller="Manager" asp-action="Index">Manager Page</a></li>
-    }
-    @if (User.IsInRole("Tech"))
-    {
-        <li><a asp-controller="Tech" asp-action="Index">Tech Page</a></li>
-    }
-    <li><a href="">Welcome, @User.Identity.Name</a></li>
+    <ul class="nav navbar-nav navbar-right">
+        @if (User.IsInRole("Admin"))
+        {
+            <li><a asp-controller="Admin" asp-action="Index">Admin Page</a></li>
+        }
+        @if (User.IsInRole("Manager"))
+        {
+            <li><a asp-controller="Manager" asp-action="Index">Manager Page</a></li>
+        }
+        @if (User.IsInRole("Tech"))
+        {
+            <li><a asp-controller="Tech" asp-action="Index">Tech Page</a></li>
+        }
+        <li><a href="">Добро пожаловать, @User.Identity.Name</a></li>
 
-    <li><a id="logoutLink" asp-controller="Account" asp-action="LogOut">Log Out</a></li>
-</ul>
+        <li><a id="logoutLink" asp-controller="Account" asp-action="LogOut">Log Out</a></li>
+    </ul>
 }
 else
 {

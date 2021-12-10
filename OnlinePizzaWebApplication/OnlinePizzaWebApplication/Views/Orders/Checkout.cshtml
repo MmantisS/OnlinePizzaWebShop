@@ -1,18 +1,30 @@
+п»ї@using System.Security.Cryptography
 @model Order
 
 @{
     ViewData["Title"] = "Check Out";
+    ViewData["h1"] = "РЎРѕР·РґР°РµРј Р·Р°РєР°Р·";
 }
 
-<h2>Create Your Order</h2>
-@foreach (ShoppingCartItem item in ViewBag.Items)
+<h1> РЎРѕР·РґР°РµРј РІР°С€ Р·Р°РєР°Р·</h1>
+
+<tbody>
+@{ decimal totalPrice = 0m;}
+@foreach (ShoppingCartItem line in ViewBag.Items)
 {
-    @item.Pizza.Name
-    @item.Amount
+    <tr>
+        <td class="text-left">@line.Pizza.Name</td>
+        <td class="text-right">@line.Amount</td>
+        <td class="text-right">
+            @((line.Amount * line.Pizza.Price).ToString("c"))
+        </td>
+    </tr>
+    totalPrice += line.Amount * line.Pizza.Price;
 }
-
+@totalPrice
+</tbody>
 <form asp-action="Checkout" method="post" class="form-horizontal" role="form">
-    <h4>"Вы всего в одном шаге от вкусной пиццы"</h4>
+    <h2>Р’С‹ РІСЃРµРіРѕ РІ РѕРґРЅРѕРј С€Р°РіРµ РѕС‚ РІРєСѓСЃРЅРѕР№ РїРёС†С†С‹</h2>
     <hr />
 
     <div asp-validation-summary="All" class="text-danger"></div>
