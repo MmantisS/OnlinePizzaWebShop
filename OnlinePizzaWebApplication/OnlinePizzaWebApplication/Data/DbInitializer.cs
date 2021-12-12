@@ -23,10 +23,40 @@ namespace OnlinePizzaWebApplication.Data
                 return;
             }
             ClearDatabase(context);
+            CreateRole(context, roleManager, userManager, "Courier");
+            CreateRole(context, roleManager, userManager, "Cook");
             CreateAdminRole(context, roleManager, userManager);
             CreateManagerRole(context, roleManager, userManager);
             CreateTechnologistRole(context, roleManager, userManager);
             SeedDatabase(context, roleManager, userManager);
+        }
+        private static void CreateRole(AppDbContext context, RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, string NameOfRole)
+        {
+            bool roleExists = roleManager.RoleExistsAsync(NameOfRole).Result;
+            if (roleExists)
+            {
+                return;
+            }
+
+            var role = new IdentityRole()
+            {
+                Name = NameOfRole
+            };
+            roleManager.CreateAsync(role).Wait();
+
+            var user = new IdentityUser()
+            {
+                UserName = NameOfRole,
+                Email = NameOfRole + "@default.com"
+            };
+
+            string adminPassword = "Password123";
+            var userResult = userManager.CreateAsync(user, adminPassword).Result;
+
+            if (userResult.Succeeded)
+            {
+                userManager.AddToRoleAsync(user, NameOfRole).Wait();
+            }
         }
 
         private static void CreateTechnologistRole(AppDbContext context, RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
@@ -205,10 +235,10 @@ namespace OnlinePizzaWebApplication.Data
             };
             var Employees = new List<Employee>()
             { new Employee {Name = "Колмыков Никита", Salary = 40000, Role = _roleManager.Roles.First(e => e.Name == "Manager"), WorkedHours= 20},
-                new Employee {Name = "Ягодников Алексей", Salary = 30000, Role = _roleManager.Roles.First(e => e.Name == "Tech"), WorkedHours = 15},
-                new Employee {Name = "Кардапольцев Дмитрий", Salary = 10000, Role = _roleManager.Roles.First(e => e.Name == "Manager"), BonusJobs = 250, AmountOfBonusJobs = 10},
-                new Employee {Name = "Пекаревич Иван", Salary = 40000, Role = _roleManager.Roles.First(e => e.Name == "Manager")},
-                    new Employee {Name = "Курьеров Георгий", Salary = 40000, Role = _roleManager.Roles.First(e => e.Name == "Manager")}
+                new Employee {Name = "Ягодников Алексей", Salary = 50000, Role = _roleManager.Roles.First(e => e.Name == "Tech"), WorkedHours = 15},
+                new Employee {Name = "Кардапольцев Дмитрий", Salary = 20000, Role = _roleManager.Roles.First(e => e.Name == "Admin")},
+                new Employee {Name = "Пекаревич Иван", Salary = 30000, Role = _roleManager.Roles.First(e => e.Name == "Cook")},
+                new Employee {Name = "Курьеров Георгий", Salary = 40000, Role = _roleManager.Roles.First(e => e.Name == "Courier"), BonusJobs = 200, AmountOfBonusJobs = 10}
             };
 
             var ord1 = new Order

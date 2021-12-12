@@ -8,25 +8,25 @@
     <ul class="nav navbar-nav navbar-right">
         @if (User.IsInRole("Admin"))
         {
-            <li><a asp-controller="Admin" asp-action="Index">Admin Page</a></li>
+            <li><a asp-controller="Admin" asp-action="Index">Админ страница</a></li>
         }
         @if (User.IsInRole("Manager"))
         {
-            <li><a asp-controller="Manager" asp-action="Index">Manager Page</a></li>
+            <li><a asp-controller="Manager" asp-action="Index">Страница менеджера</a></li>
         }
         @if (User.IsInRole("Tech"))
         {
-            <li><a asp-controller="Tech" asp-action="Index">Tech Page</a></li>
+            <li><a asp-controller="Tech" asp-action="Index">Страница Технолога</a></li>
         }
         <li><a href="">Добро пожаловать, @User.Identity.Name</a></li>
 
-        <li><a id="logoutLink" asp-controller="Account" asp-action="LogOut">Log Out</a></li>
+        <li><a id="logoutLink" asp-controller="Account" asp-action="LogOut">Выйти</a></li>
     </ul>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a id="registerLink" asp-controller="Account" asp-action="Register">Register</a></li>
-        <li><a id="loginLink" asp-controller="Account" asp-action="Login">Log in</a></li>
+        <li><a id="registerLink" asp-controller="Account" asp-action="Register">Регистрация</a></li>
+        <li><a id="loginLink" asp-controller="Account" asp-action="Login">Вход</a></li>
     </ul>
 }

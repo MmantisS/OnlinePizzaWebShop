@@ -1,4 +1,4 @@
-п»ї@model IEnumerable<Order>
+@model IEnumerable<Order>
 
 @{
     var pageName = "Orders";
@@ -9,7 +9,7 @@
 
 @if (Model.Count() <= 0)
 {
-<h3>You haven't created any @pageName yet...</h3>
+    <h3>You haven't created any @pageName yet...</h3>
 }
 
 
@@ -90,9 +90,9 @@
                 @Html.DisplayFor(modelItem => item.EmployeeCourier.Name);
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
-                <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-info">Р”РµС‚Р°Р»Рё</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderId">РЈРґР°Р»РёС‚СЊ</a>
+                <a asp-action="Edit" asp-route-id="@item.OrderId">Редактировать</a>
+                <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-info">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Удалить</a>
             </td>
         </tr>
         }

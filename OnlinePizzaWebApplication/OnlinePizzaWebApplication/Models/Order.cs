@@ -61,10 +61,11 @@ namespace OnlinePizzaWebApplication.Models
         //[BindNever]
         //[ScaffoldColumn(false)]
         //public string OrderStatus { get; set; }
+        [DisplayName("Курьер")]
         public virtual Employee EmployeeCourier { get; set; }
-
+        [DisplayName("Повар")]
         public virtual Employee EmployeeCook { get; set; }
-
+        [DisplayName("Статус Заказа")]
         public Status status { get; set; }
 
         public string UserId { get; set; }
@@ -74,9 +75,9 @@ namespace OnlinePizzaWebApplication.Models
     }
     public enum Status
     {
-        New,
-        Cooking,
-        Ready,
-        Delivered
+        Создан,
+        Готовится,
+        Доставляется,
+        Доставлен
     }
 }

@@ -76,7 +76,7 @@ namespace OnlinePizzaWebApplication.Controllers
 
             if (isAdmin)
             {
-                var allOrders = await _context.Orders.Include(o => o.OrderLines).Include(o => o.User).ToListAsync();
+                var allOrders = await _context.Orders.Include(o => o.OrderLines).Include(o => o.User).Include(o => o.EmployeeCourier).Include(o => o.EmployeeCook).ToListAsync();
                 return View(allOrders);
             }
             else
@@ -147,9 +147,12 @@ namespace OnlinePizzaWebApplication.Controllers
         }
 
         // GET: Orders/Edit/5
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> EditAsync(int id)
         {
-            return View();
+            ViewBag.Cooks = _context.Employees.Where(o => o.Role.Name == "Cook");
+            ViewBag.Courier = _context.Employees.Where(o => o.Role.Name == "Courier");
+            var allOrders = await _context.Orders.Where(o => o.OrderId == id).Include(o => o.OrderLines).Include(o => o.User).Include(o => o.EmployeeCourier).Include(o => o.EmployeeCook).ToListAsync();
+            return View(allOrders);
         }
 
         // POST: Orders/Edit/5
@@ -160,7 +163,12 @@ namespace OnlinePizzaWebApplication.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                var updateToOrder = _context.Orders.Include(o => o.EmployeeCook).Include(o => o.EmployeeCourier).First(o => o.OrderId == id);
+                //updateToOrder.status = collection["item.Status"];
+                updateToOrder.EmployeeCook = _context.Employees.First(o => o.Id == Convert.ToInt32(collection[collection.Keys.ElementAt(1)]));
+                updateToOrder.EmployeeCourier = _context.Employees.First(o => o.Id == Convert.ToInt32(collection[collection.Keys.ElementAt(2)]));
+                _context.Update(updateToOrder);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch

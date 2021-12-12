@@ -34,16 +34,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-controller="Pizzas" asp-action="ListAll">Pizzas</a></li>
+                    <li><a asp-controller="Pizzas" asp-action="ListAll">Меню</a></li>
                     @await Component.InvokeAsync("CategoryMenu")
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <li><a asp-controller="Reviews" asp-action="Index">Reviews</a></li>
-                        <li><a asp-controller="Orders" asp-action="Index">Orders</a></li>
+                        <li><a asp-controller="Reviews" asp-action="Index">Отзывы</a></li>
+                        <li><a asp-controller="Orders" asp-action="Index">Заказы</a></li>
                     }
                     else
                     {
-                        <li><a asp-controller="Reviews" asp-action="ListAll">Reviews</a></li>
+                        <li><a asp-controller="Reviews" asp-action="ListAll">Отзывы</a></li>
                     }
                     @await Component.InvokeAsync("ShoppingCartSummary")
                 </ul>
@@ -56,8 +56,8 @@
         <hr />
         <footer>
             <p>
-                <div><a asp-controller="Home" asp-action="About"><b>About</b></a></div>
-                <div><a asp-controller="Home" asp-action="Contact"><b>Contact</b></a></div>
+                <div><a asp-controller="Home" asp-action="About"><b>О нас</b></a></div>
+                <div><a asp-controller="Home" asp-action="Contact"><b>Контакты</b></a></div>
                 <div>&copy;  @DateTime.Now.Year - GiorgioGiovanni</div>
             </p>
         </footer>

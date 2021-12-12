@@ -30,7 +30,6 @@ namespace OnlinePizzaWebApplication.Models
 
         [StringLength(255, MinimumLength = 2)]
         [DataType(DataType.MultilineText)]
-        [Required]
         public string Description { get; set; }
 
         [DataType(DataType.ImageUrl)]
