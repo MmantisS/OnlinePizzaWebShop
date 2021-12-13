@@ -19,6 +19,8 @@ namespace OnlinePizzaWebApplication.Models
 
         public virtual IList<OrderDetail> AssignedOrders { get; set; }
         public IdentityRole Role { get; set; }
+        
+        public IdentityUser User { get; set; } 
         public double CountSalary()
         {
             FinalSalary = Salary / 160 * WorkedHours;

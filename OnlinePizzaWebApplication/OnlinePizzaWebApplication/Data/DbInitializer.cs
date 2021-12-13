@@ -193,13 +193,15 @@ namespace OnlinePizzaWebApplication.Data
                 new Reviews { User = user2, Title ="Only Bland Vegetables", Description="Tasteless vegetables on this soggy Pizza.", Grade=1, Date=DateTime.Now, Pizza = piz2 },
             };
 
-            var ing1 = new Ingredients { Name = "Cheese", Price = 25, Quantity = 40 };
-            var ing2 = new Ingredients { Name = "Flour", Price = 5, Quantity = 100, PurchasePrice = 2.5 };
-            var ing3 = new Ingredients { Name = "Tomatoe sauce", Price = 25, Quantity = 10, PurchasePrice = 20, ExpirationDate = DateTime.Parse("15.02.2022")};
-            var ing4 = new Ingredients { Name = "Lettuce", Price = 10, Quantity = 40, PurchasePrice = 5, ExpirationDate = DateTime.Parse("12.12.2021")};
-            var ing5 = new Ingredients { Name = "Mushrooms", Price = 25, Quantity = 40 };
-            var ing6 = new Ingredients { Name = "Kebab", Price = 25, Quantity = 40 };
-            var ing7 = new Ingredients { Name = "Shrimp", Price = 25, Quantity = 40 };
+            var ing1 = new Ingredients { Name = "Моцарелла", Price = 585, Quantity = 40 };
+            var ing2 = new Ingredients { Name = "Мука", Price = 22, Quantity = 100, PurchasePrice = 2.5 };
+            var ing3 = new Ingredients { Name = "Соус Томатный", Price = 450, Quantity = 10, PurchasePrice = 20, ExpirationDate = DateTime.Parse("15.02.2022")};
+            var ing4 = new Ingredients { Name = "Бекон", Price = 10, Quantity = 40, PurchasePrice = 5, ExpirationDate = DateTime.Parse("12.12.2021")};
+            var ing5 = new Ingredients { Name = "Ананас", Price = 183, Quantity = 40 };
+            var ing6 = new Ingredients { Name = "Пепперони", Price = 25, Quantity = 40 };
+            var ing7 = new Ingredients { Name = "Тесто", Price = 59, Quantity = 40 };
+            var ing8= new Ingredients { Name = "Томаты", Price = 195, Quantity = 40 };
+            var ing9 = new Ingredients { Name = "Пармезан", Price = 700, Quantity = 40 };
 
             var ings = new List<Ingredients>()
             {
@@ -212,33 +214,39 @@ namespace OnlinePizzaWebApplication.Data
                 new PizzaIngredients { Ingredient = ing2, Pizza = piz1 },
                 new PizzaIngredients { Ingredient = ing3, Pizza = piz1 },
                 new PizzaIngredients { Ingredient = ing5, Pizza = piz1 },
+                new PizzaIngredients { Ingredient = ing7, Pizza = piz1},
 
                 new PizzaIngredients { Ingredient = ing1, Pizza = piz2 },
                 new PizzaIngredients { Ingredient = ing2, Pizza = piz2 },
                 new PizzaIngredients { Ingredient = ing3, Pizza = piz2 },
                 new PizzaIngredients { Ingredient = ing4, Pizza = piz2 },
+                new PizzaIngredients { Ingredient = ing7, Pizza = piz2},
 
                 new PizzaIngredients { Ingredient = ing1, Pizza = piz3 },
                 new PizzaIngredients { Ingredient = ing2, Pizza = piz3 },
                 new PizzaIngredients { Ingredient = ing3, Pizza = piz3 },
+                new PizzaIngredients { Ingredient = ing7, Pizza = piz3},
 
                 new PizzaIngredients { Ingredient = ing1, Pizza = piz4 },
                 new PizzaIngredients { Ingredient = ing2, Pizza = piz4 },
                 new PizzaIngredients { Ingredient = ing3, Pizza = piz4 },
+                new PizzaIngredients { Ingredient = ing7, Pizza = piz4},
 
                 new PizzaIngredients { Ingredient = ing1, Pizza = piz5 },
                 new PizzaIngredients { Ingredient = ing2, Pizza = piz5 },
                 new PizzaIngredients { Ingredient = ing3, Pizza = piz5 },
                 new PizzaIngredients { Ingredient = ing6, Pizza = piz5 },
                 new PizzaIngredients { Ingredient = ing4, Pizza = piz5 },
+                new PizzaIngredients { Ingredient = ing7, Pizza = piz5},
 
             };
             var Employees = new List<Employee>()
             { new Employee {Name = "Колмыков Никита", Salary = 40000, Role = _roleManager.Roles.First(e => e.Name == "Manager"), WorkedHours= 20},
                 new Employee {Name = "Ягодников Алексей", Salary = 50000, Role = _roleManager.Roles.First(e => e.Name == "Tech"), WorkedHours = 15},
                 new Employee {Name = "Кардапольцев Дмитрий", Salary = 20000, Role = _roleManager.Roles.First(e => e.Name == "Admin")},
-                new Employee {Name = "Пекаревич Иван", Salary = 30000, Role = _roleManager.Roles.First(e => e.Name == "Cook")},
-                new Employee {Name = "Курьеров Георгий", Salary = 40000, Role = _roleManager.Roles.First(e => e.Name == "Courier"), BonusJobs = 200, AmountOfBonusJobs = 10}
+                new Employee {Name = "Пекаревич Иван", Salary = 30000, User = _userManager.Users.First(o => o.UserName == "Cook"), Role = _roleManager.Roles.First(e => e.Name == "Cook")},
+                new Employee {Name = "Курьеров Георгий", Salary = 20000, Role = _roleManager.Roles.First(e => e.Name == "Courier"), BonusJobs = 200, AmountOfBonusJobs = 10},
+                new Employee {Name = "Курьерович Сергей", Salary = 20000, Role = _roleManager.Roles.First(e => e.Name == "Courier"),  BonusJobs = 200, AmountOfBonusJobs = 5}
             };
 
             var ord1 = new Order

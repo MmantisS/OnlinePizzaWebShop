@@ -164,7 +164,7 @@ namespace OnlinePizzaWebApplication.Controllers
             {
                 // TODO: Add update logic here
                 var updateToOrder = _context.Orders.Include(o => o.EmployeeCook).Include(o => o.EmployeeCourier).First(o => o.OrderId == id);
-                //updateToOrder.status = collection["item.Status"];
+                updateToOrder.Status = Enum.Parse<Status>(collection[collection.Keys.ElementAt(0)]);
                 updateToOrder.EmployeeCook = _context.Employees.First(o => o.Id == Convert.ToInt32(collection[collection.Keys.ElementAt(1)]));
                 updateToOrder.EmployeeCourier = _context.Employees.First(o => o.Id == Convert.ToInt32(collection[collection.Keys.ElementAt(2)]));
                 _context.Update(updateToOrder);

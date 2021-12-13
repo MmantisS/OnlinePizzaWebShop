@@ -66,7 +66,7 @@ namespace OnlinePizzaWebApplication.Models
         [DisplayName("Повар")]
         public virtual Employee EmployeeCook { get; set; }
         [DisplayName("Статус Заказа")]
-        public Status status { get; set; }
+        public Status Status { get; set; }
 
         public string UserId { get; set; }
 

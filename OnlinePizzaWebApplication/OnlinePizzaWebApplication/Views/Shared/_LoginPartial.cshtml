@@ -18,6 +18,10 @@
         {
             <li><a asp-controller="Tech" asp-action="Index">Страница Технолога</a></li>
         }
+        @if (User.IsInRole("Cook"))
+        {
+            <li><a asp-controller="Cook" asp-action="Index">Страница Повара</a></li>
+        }
         <li><a href="">Добро пожаловать, @User.Identity.Name</a></li>
 
         <li><a id="logoutLink" asp-controller="Account" asp-action="LogOut">Выйти</a></li>
