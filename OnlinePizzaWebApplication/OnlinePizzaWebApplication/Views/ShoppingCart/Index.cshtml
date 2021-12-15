@@ -1,51 +1,50 @@
-@model ShoppingCartViewModel
+﻿@model ShoppingCartViewModel
 
 @{
-    var pageName = "Shopping Cart";
+    var pageName = "Корзина";
     ViewData["Title"] = pageName;
 }
 
-<h2>Your @pageName</h2>
-<h4>������ � ����� �������</h4>
+<h2>Ваша @pageName</h2>
+<h4>Товары в вашей корзине</h4>
 <table class="table table-bordered table-striped">
     <thead>
-        <tr>
-            <th>Selected Amount</th>
-            <th>Pizza</th>
-            <th class="text-right">Price</th>
-            <th class="text-right">Subtotal</th>
-        </tr>
+    <tr>
+        <th>Количество</th>
+        <th>Пицца</th>
+        <th class="text-right">Цена</th>
+        <th class="text-right">Подсумма</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
-        {
-            <tr>
-                <td class="text-center"><a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a>          <b>@line.Amount</b>          <a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a></td>
-                <td class="text-left">@line.Pizza.Name</td>
-                <td class="text-right">@line.Pizza.Price.ToString("c")</td>
-                <td class="text-right">
-                    @((line.Amount * line.Pizza.Price).ToString("c"))
-                </td>
-            </tr>
-        }
-    </tbody>
-    <tfoot>
+    @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+    {
         <tr>
-            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-center"><a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a>          <b>@line.Amount</b>          <a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a></td>
+            <td class="text-left">@line.Pizza.Name</td>
+            <td class="text-right">@line.Pizza.Price.ToString("c")</td>
             <td class="text-right">
-                @Model.ShoppingCartTotal.ToString("c")
+                @((line.Amount * line.Pizza.Price).ToString("c"))
             </td>
         </tr>
+    }
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3" class="text-right">Сумма</td>
+        <td class="text-right">
+            @Model.ShoppingCartTotal.ToString("c")
+        </td>
+    </tr>
     </tfoot>
 </table>
 
 <div align="right">
     @if (Model.ShoppingCartTotal > 0)
     {
-        <a asp-controller="Orders" asp-action="Checkout" class="btn btn-primary">Check Out</a>
+        <a asp-controller="Orders" asp-action="Checkout" class="btn btn-primary">Подтвердить</a>
     }
 </div>
 <div align="left">
-    <a asp-controller="ShoppingCart" asp-action="ClearCart" class="btn btn-danger">Clear Cart</a>
+    <a asp-controller="ShoppingCart" asp-action="ClearCart" class="btn btn-danger">Очистить корзину</a>
 </div>
-

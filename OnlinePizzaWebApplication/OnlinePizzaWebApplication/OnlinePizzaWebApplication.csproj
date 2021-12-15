@@ -41,7 +41,6 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Views\OrderDetails\" />
     <Folder Include="Views\Shared\Components\ShoppingCartSummary\" />
-    <Folder Include="Views\ShoppingCart\" />
     <Folder Include="Views\Shared\Components\CarouselMenu\" />
   </ItemGroup>
 

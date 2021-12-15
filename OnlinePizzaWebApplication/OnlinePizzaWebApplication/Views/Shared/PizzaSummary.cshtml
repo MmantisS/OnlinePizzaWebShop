@@ -1,4 +1,4 @@
-@model Pizzas
+﻿@model Pizzas
 
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
@@ -8,13 +8,13 @@
             <h3>
                 <a asp-controller="Pizzas" asp-action="DisplayDetails" asp-route-id="@Model.Id">@Model.Name</a>
             </h3>
-            <h5><b>Category: @Model.Category.Name</b></h5>
+            <h5><b>Категория: @Model.Category.Name</b></h5>
             <p>@Model.Description</p>
         </div>
         <div class="addToCart">
             <p class="button">
                 <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
-                   asp-route-pizzaId="@Model.Id">Add Pizza</a>
+                   asp-route-pizzaId="@Model.Id">Добавить пиццу</a>
             </p>
         </div>
     </div>

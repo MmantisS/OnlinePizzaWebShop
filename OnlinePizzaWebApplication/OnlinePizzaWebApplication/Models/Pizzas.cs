@@ -37,7 +37,7 @@ namespace OnlinePizzaWebApplication.Models
 
         public bool IsPizzaOfTheWeek { get; set; }
 
-        [DisplayName("Select Category")]
+        [DisplayName("Выберите категорию")]
         public int CategoriesId { get; set; }
 
         public virtual Categories Category { get; set; }

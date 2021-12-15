@@ -167,6 +167,12 @@ namespace OnlinePizzaWebApplication.Controllers
                 updateToOrder.Status = Enum.Parse<Status>(collection[collection.Keys.ElementAt(0)]);
                 updateToOrder.EmployeeCook = _context.Employees.First(o => o.Id == Convert.ToInt32(collection[collection.Keys.ElementAt(1)]));
                 updateToOrder.EmployeeCourier = _context.Employees.First(o => o.Id == Convert.ToInt32(collection[collection.Keys.ElementAt(2)]));
+                if (updateToOrder.Status == Status.Доставлен)
+                {
+                    Employee courier = updateToOrder.EmployeeCourier;
+                    courier.AmountOfBonusJobs += 1;
+                    _context.Update(courier);
+                }
                 _context.Update(updateToOrder);
                 _context.SaveChanges();
                 return RedirectToAction("Index");

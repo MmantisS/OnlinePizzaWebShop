@@ -75,18 +75,16 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Status);
+                    @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeCook.Name);
+                    @Html.DisplayFor(modelItem => item.EmployeeCook.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeCourier.Name);
+                    @Html.DisplayFor(modelItem => item.EmployeeCourier.Name)
                 </td>
                 <td>
-                    @*<a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |*@
-                    <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-info">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
+                    <a asp-controller="Orders" asp-action="Edit" asp-route-id="@item.OrderId">Редактировать</a>
                 </td>
             </tr>
         }

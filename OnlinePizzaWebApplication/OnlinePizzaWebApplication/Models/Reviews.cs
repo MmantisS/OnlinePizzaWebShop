@@ -26,7 +26,7 @@ namespace OnlinePizzaWebApplication.Models
 
         public DateTime Date { get; set; }
 
-        [DisplayName("Select Pizza")]
+        [DisplayName("Выберите пиццу")]
         public int PizzaId { get; set; }
 
         public virtual Pizzas Pizza { get; set; }

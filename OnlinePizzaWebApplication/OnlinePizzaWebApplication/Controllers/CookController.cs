@@ -31,7 +31,7 @@ namespace OnlinePizzaWebApplication.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> EditOrders(int id)
+        public async Task<IActionResult> EditOrder(int id)
         {
             ViewBag.Cooks = _context.Employees.Where(o => o.Role.Name == "Cook");
             ViewBag.Courier = _context.Employees.Where(o => o.Role.Name == "Courier");
@@ -42,7 +42,7 @@ namespace OnlinePizzaWebApplication.Controllers
         // POST: Orders/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult EditOrder(int id, IFormCollection collection)
         {
             try
             {
@@ -52,8 +52,6 @@ namespace OnlinePizzaWebApplication.Controllers
                 updateToOrder.Status = Enum.Parse<Status>(collection[collection.Keys.ElementAt(0)]);
                 updateToOrder.EmployeeCook = _context.Employees.First(o =>
                     o.Id == Convert.ToInt32(collection[collection.Keys.ElementAt(1)]));
-                updateToOrder.EmployeeCourier = _context.Employees.First(o =>
-                    o.Id == Convert.ToInt32(collection[collection.Keys.ElementAt(2)]));
                 _context.Update(updateToOrder);
                 _context.SaveChanges();
                 return RedirectToAction("Index");

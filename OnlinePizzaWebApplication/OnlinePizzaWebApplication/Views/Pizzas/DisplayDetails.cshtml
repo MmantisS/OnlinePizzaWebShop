@@ -1,7 +1,7 @@
-@model Pizzas
+﻿@model Pizzas
 
 @{
-    var ModelName = "Pizza Details";
+    var ModelName = "Детали пиццы";
     ViewData["Title"] = ModelName;
 }
 
@@ -20,10 +20,10 @@
             <a href="">@Model.Name</a>
         </h2>
         <div>
-        <h4>Category: <b> @Model.Category.Name </b></h4>
+        <h4>Категория: <b> @Model.Category.Name </b></h4>
         <p>@Model.Description</p>
         <p>
-            <h4><b>List of Ingredients:</b></h4>
+            <h4><b>Ингридиенты:</b></h4>
 
             @if (ViewBag.PizzaIngredients.Count > 0)
         {
@@ -34,17 +34,17 @@
             }
             else
             {
-                <div>No @Html.DisplayNameFor(Model => Model.PizzaIngredients) was found. </div>
+                <div>@Html.DisplayNameFor(Model => Model.PizzaIngredients) не найден</div>
             }
         </p>
         <p>
         @if (ViewBag.AverageReviewScore > 0)
         {
-            <h4>Average Review Score: <b> @ViewBag.AverageReviewScore </b></h4>
+            <h4>Рейтинг: <b> @ViewBag.AverageReviewScore </b></h4>
         }
         else
         {
-            <h4>No Reviews was found. </h4>
+            <h4>Нет отзывов </h4>
         }
 
         @if (ViewBag.AverageReviewScore <= 0 || ViewBag.AverageReviewScore > 5)
@@ -99,7 +99,7 @@
         <br />
         <p class="button">
             <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
-                asp-route-pizzaId="@Model.Id">Add Pizza</a>
+                asp-route-pizzaId="@Model.Id">Добавить пиццу</a>
         </p>
     </div>
 </div>

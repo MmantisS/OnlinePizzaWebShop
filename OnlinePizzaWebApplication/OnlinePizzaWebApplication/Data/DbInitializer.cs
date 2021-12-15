@@ -280,7 +280,13 @@ namespace OnlinePizzaWebApplication.Data
                 ord1
             };
 
+            var expenses = new List<Expenses>()
+            {
+                new Expenses() {Name = "Аренда", Expense = 30000},
+                new Expenses() {Name = "Коммунальные услуги", Expense = 50000}
+            };
 
+            _context.Expenses.AddRange(expenses);
             _context.Employees.AddRange(Employees);
             _context.Categories.AddRange(cats);
             _context.Pizzas.AddRange(pizs);

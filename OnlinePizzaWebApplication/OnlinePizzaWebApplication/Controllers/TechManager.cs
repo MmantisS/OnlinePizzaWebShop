@@ -74,6 +74,8 @@ namespace OnlinePizzaWebApplication.Controllers
             }
             var entity = _context.Ingredients.First(e => e.Id == ingredients.Id);
             entity.Quantity += AddedQuantity;
+            _context.Expenses.Add(new Expenses()
+                {Name = string.Format("Покупка ингридиента {0}", entity.Name), Expense = entity.Quantity * entity.Price});
             _context.Update(entity);
             await _context.SaveChangesAsync();
             return View(ingredients);
