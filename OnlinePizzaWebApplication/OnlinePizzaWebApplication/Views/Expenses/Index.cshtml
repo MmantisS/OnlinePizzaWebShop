@@ -1,5 +1,40 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Expenses>
+
 @{
+    var pageName = "Затраты";
+    ViewData["Title"] = pageName;
 }
+
+<h2>@pageName</h2>
+
+@if (Model.Count() <= 0)
+{
+    <h3>You haven't created any @pageName yet...</h3>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expense)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expense)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
