@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,9 +20,11 @@ namespace OnlinePizzaWebApplication.Controllers
         public async Task<ActionResult> Index()
         {
             await _context.Employees.ForEachAsync(e => e.CountSalary());
+            var list = await _context.Expenses.ToListAsync();
             foreach (var employee in _context.Employees)
             {
-                _context.Expenses.Add(new Expenses() {Name = "Выплата ЗП для" + employee.Name, Expense = employee.FinalSalary});
+                if (!list.Select(e => e.Name).Contains("Выплата ЗП для " + employee.Name))
+                    _context.Expenses.Add(new Expenses() {Name = "Выплата ЗП для " + employee.Name, Expense = employee.FinalSalary});
             }
 
             _context.SaveChanges();
