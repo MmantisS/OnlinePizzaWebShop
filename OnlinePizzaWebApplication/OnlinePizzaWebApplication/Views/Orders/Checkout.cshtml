@@ -9,19 +9,35 @@
 <h1> Создаем ваш заказ</h1>
 
 <tbody>
-@{ decimal totalPrice = 0m;}
-@foreach (ShoppingCartItem line in ViewBag.Items)
+    @{ decimal totalPrice = 0m;}
+    @foreach (ShoppingCartItem line in ViewBag.Items)
 {
-    <tr>
-        <td class="text-left">@line.Pizza.Name</td>
-        <td class="text-right">@line.Amount</td>
-        <td class="text-right">
-            @((line.Amount * line.Pizza.Price).ToString("c"))
-        </td>
-    </tr>
+    <dt>
+        Название
+    </dt>
+    <dd>
+        @line.Pizza.Name
+    </dd>
+    <dt>
+        Количество
+    </dt>
+    <dd>
+        @line.Amount
+    </dd>
+    <dt>
+        Подсумма
+    </dt>
+    <dd>
+        @((line.Amount * line.Pizza.Price).ToString("c"))
+    </dd>
     totalPrice += line.Amount * line.Pizza.Price;
 }
-@totalPrice
+    <dd>
+        Общая сумма
+    </dd>
+    <dt>
+        @totalPrice
+    </dt>
 </tbody>
 <form asp-action="Checkout" method="post" class="form-horizontal" role="form">
     <h2>Вы всего в одном шаге от вкусной пиццы</h2>

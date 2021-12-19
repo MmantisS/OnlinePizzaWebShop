@@ -13,17 +13,20 @@ namespace OnlinePizzaWebApplication.Models
         [StringLength(100, MinimumLength = 2)]
         [RegularExpression("([a-zA-Z0-9 .&'-]+)", ErrorMessage = "The field Title should only include letters and number.")]
         [DataType(DataType.Text)]
+        [DisplayName("Название")]
         [Required]
         public string Title { get; set; }
 
         [StringLength(500, MinimumLength = 2)]
         [DataType(DataType.MultilineText)]
         [Required]
+        [DisplayName("Описание")]
         public string Description { get; set; }
 
         [Range(1, 5)]
+        [DisplayName("Оценка")]
         public int Grade { get; set; }
-
+        [DisplayName("Дата")]
         public DateTime Date { get; set; }
 
         [DisplayName("Выберите пиццу")]
@@ -32,7 +35,7 @@ namespace OnlinePizzaWebApplication.Models
         public virtual Pizzas Pizza { get; set; }
 
         public string UserId { get; set; }
-
+        [DisplayName("Пользователь")]
         public IdentityUser User { get; set; }
 
     }

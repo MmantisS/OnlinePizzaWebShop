@@ -29,8 +29,12 @@
                 @Html.DisplayNameFor(model => model.BonusJobs)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.AmountOfBonusJobs)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.FinalSalary)
             </th>
+
 
             <th></th>
         </tr>
@@ -54,15 +58,18 @@
                     @Html.DisplayFor(modelItem => item.BonusJobs)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.AmountOfBonusJobs)
+                </td>
+                <td>
                     @{total = item.CountSalary();}
                     @total.ToString();
                 </td>
                 <td>
-                    @*<a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |*@
-                    @* <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-info">Details</a> |*@
-                    @*<a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>*@
+                @*<a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |*@
+                @* <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-info">Details</a> |*@
+                @*<a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>*@
                 </td>
-            </tr>
+        </tr>
         }
     </tbody>
 </table>

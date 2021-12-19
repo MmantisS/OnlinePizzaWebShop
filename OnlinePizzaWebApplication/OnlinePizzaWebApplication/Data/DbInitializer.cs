@@ -157,11 +157,11 @@ namespace OnlinePizzaWebApplication.Data
                 cat1, cat2, cat3
             };
 
-            var piz1 = new Pizzas { Name = "Карбонара", Price = 70.00M, Category = cat1, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Pizza_capricciosa.jpg", IsPizzaOfTheWeek = false };
-            var piz2 = new Pizzas { Name = "Сырная", Price = 70.00M, Category = cat3, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Vegetarian_pizza.jpg", IsPizzaOfTheWeek = false };
-            var piz3 = new Pizzas { Name = "Четыре сезона", Price = 75.00M, Category = cat1, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Hawaiian_pizza_1.jpg", IsPizzaOfTheWeek = true };
-            var piz4 = new Pizzas { Name = "Пепперони", Price = 65.00M, Category = cat1, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg", IsPizzaOfTheWeek = false };
-            var piz5 = new Pizzas { Name = "Ветчина и грибы", Price = 85.00M, Category = cat2, ImageUrl = "http://2.bp.blogspot.com/_3cSn3Qz_4IA/THkYqKwGw1I/AAAAAAAAAPg/ybKpvRbjDWE/s1600/matsl%C3%A4kten+002.JPG", IsPizzaOfTheWeek = true };
+            var piz1 = new Pizzas { Name = "Карбонара", Price = 70.00M, Category = cat1, ImageUrl = "https://user80515.clients-cdnnow.ru/2b-ru/1601565708329_392x320.jpeg", IsPizzaOfTheWeek = false };
+            var piz2 = new Pizzas { Name = "Сырная", Price = 70.00M, Category = cat3, ImageUrl = "https://перепечи24.рф/wa-data/public/shop/products/34/00/34/images/83/83.750.jpg", IsPizzaOfTheWeek = false };
+            var piz3 = new Pizzas { Name = "Четыре сезона", Price = 75.00M, Category = cat1, ImageUrl = "http://i.otzovik.com/objects/b/780000/773681.png", IsPizzaOfTheWeek = true };
+            var piz4 = new Pizzas { Name = "Пепперони", Price = 65.00M, Category = cat1, ImageUrl = "https://static.pizzasushiwok.ru/images/menu_new/6-1300.jpg", IsPizzaOfTheWeek = false };
+            var piz5 = new Pizzas { Name = "Ветчина и грибы", Price = 85.00M, Category = cat2, ImageUrl = "https://cafetiamo.ru/wa-data/public/shop/products/28/00/28/images/180/180.970.png", IsPizzaOfTheWeek = true };
 
             var pizs = new List<Pizzas>()
             {
@@ -188,9 +188,9 @@ namespace OnlinePizzaWebApplication.Data
 
             var revs = new List<Reviews>()
             {
-                new Reviews { User = user1, Title ="Best Pizza with mushrooms", Description="I love this Pizza with mushrooms on it.", Grade=4, Date=DateTime.Now, Pizza = piz1 },
-                new Reviews { User = user2, Title ="Worst Pizza with mushrooms", Description="I hate this Pizza with mushrooms on it.", Grade=1, Date=DateTime.Now.AddDays(-1), Pizza = piz1 },
-                new Reviews { User = user2, Title ="Only Bland Vegetables", Description="Tasteless vegetables on this soggy Pizza.", Grade=1, Date=DateTime.Now, Pizza = piz2 },
+                new Reviews { User = user1, Title ="Лучшая пицца с грибами", Description="Понравилась эта пицца с грибами", Grade=4, Date=DateTime.Now, Pizza = piz1 },
+                new Reviews { User = user2, Title ="Худшая пицца с грибами", Description="Не понравились грибы", Grade=1, Date=DateTime.Now.AddDays(-1), Pizza = piz1 },
+                new Reviews { User = user2, Title ="Невкусные оцвощи", Description="Безвкусные овощи", Grade=1, Date=DateTime.Now, Pizza = piz2 },
             };
 
             var ing1 = new Ingredients { Name = "Моцарелла", Price = 585, Quantity = 40 };
@@ -244,7 +244,7 @@ namespace OnlinePizzaWebApplication.Data
             { new Employee {Name = "Колмыков Никита", Salary = 40000, Role = _roleManager.Roles.First(e => e.Name == "Manager"), WorkedHours= 20},
                 new Employee {Name = "Ягодников Алексей", Salary = 50000, Role = _roleManager.Roles.First(e => e.Name == "Tech"), WorkedHours = 15},
                 new Employee {Name = "Кардапольцев Дмитрий", Salary = 20000, Role = _roleManager.Roles.First(e => e.Name == "Admin")},
-                new Employee {Name = "Пекаревич Иван", Salary = 30000, User = _userManager.Users.First(o => o.UserName == "Cook"), Role = _roleManager.Roles.First(e => e.Name == "Cook")},
+                new Employee {Name = "Пекаревич Иван", Salary = 30000, User = _userManager.Users.First(o => o.UserName == "Cook"), WorkedHours = 25, Role = _roleManager.Roles.First(e => e.Name == "Cook")},
                 new Employee {Name = "Курьеров Георгий", Salary = 20000, Role = _roleManager.Roles.First(e => e.Name == "Courier"), BonusJobs = 200, AmountOfBonusJobs = 10},
                 new Employee {Name = "Курьерович Сергей", Salary = 20000, Role = _roleManager.Roles.First(e => e.Name == "Courier"),  BonusJobs = 200, AmountOfBonusJobs = 5}
             };

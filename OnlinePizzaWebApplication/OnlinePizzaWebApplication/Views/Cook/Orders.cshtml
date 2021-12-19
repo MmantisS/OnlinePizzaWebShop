@@ -38,13 +38,13 @@
                 @Html.DisplayNameFor(model => model.User)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status);
+                @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeCook);
+                @Html.DisplayNameFor(model => model.EmployeeCook)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeCourier);
+                @Html.DisplayNameFor(model => model.EmployeeCourier)
             </th>
             <th></th>
         </tr>
@@ -75,17 +75,17 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Status);
+                    @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeCook.Name);
+                    @Html.DisplayFor(modelItem => item.EmployeeCook.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeCourier.Name);
+                    @Html.DisplayFor(modelItem => item.EmployeeCourier.Name)
                 </td>
                 <td>
                     <a asp-controller="Cook" asp-action="EditOrder" asp-route-id="@item.OrderId">Редактировать</a>
-                    <a asp-controller="Orders" asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-info">Details</a>
+                    <a asp-controller="Orders" asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-info">Детали</a>
                 </td>
             </tr>
         }

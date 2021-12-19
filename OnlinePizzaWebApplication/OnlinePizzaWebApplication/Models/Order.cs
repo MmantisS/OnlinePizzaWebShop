@@ -69,7 +69,7 @@ namespace OnlinePizzaWebApplication.Models
         public Status Status { get; set; }
 
         public string UserId { get; set; }
-
+        [DisplayName("Пользователь")]
         public IdentityUser User { get; set; }
         
     }

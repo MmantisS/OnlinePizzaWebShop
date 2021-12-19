@@ -54,7 +54,7 @@ namespace OnlinePizzaWebApplication.Controllers
             {
                 await _orderRepository.CreateOrderAsync(order);
                 await _shoppingCart.ClearCartAsync();
-
+                TempData["id"] = order.OrderId;
                 return RedirectToAction("CheckoutComplete");
             }
 
@@ -64,6 +64,8 @@ namespace OnlinePizzaWebApplication.Controllers
 
         public IActionResult CheckoutComplete()
         {
+            ViewBag.Message = "Номер заказа " + TempData["id"];
+            ViewBag.Track =  Url.ActionLink("Details", "Orders") + "/" + TempData["id"];
             ViewBag.CheckoutCompleteMessage = $"Спасибо за заказ!";
             return View();
         }
@@ -97,9 +99,17 @@ namespace OnlinePizzaWebApplication.Controllers
 
             var orders = await _context.Orders.Include(o => o.OrderLines).Include(o => o.User)
                 .SingleOrDefaultAsync(m => m.OrderId == id);
-            var user = await _userManager.GetUserAsync(HttpContext.User);
-            var userRoles = await _userManager.GetRolesAsync(user);
-            bool isAdmin = userRoles.Any(r => r == "Admin");
+            IdentityUser user;
+            bool isAdmin = false;
+            if (HttpContext.User != null)
+            {
+                user = await _userManager.GetUserAsync(HttpContext.User);
+                if (user != null)
+                {
+                    var userRoles = await _userManager.GetRolesAsync(user);
+                    isAdmin = userRoles.Any(r => r == "Admin");
+                }
+            }
 
             if (orders == null)
             {
@@ -175,7 +185,7 @@ namespace OnlinePizzaWebApplication.Controllers
                 }
                 _context.Update(updateToOrder);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Orders", "Manager");
             }
             catch
             {
